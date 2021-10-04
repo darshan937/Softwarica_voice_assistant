@@ -93,3 +93,18 @@ if __name__ == '__main__':
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
             print(f"sir the time is {strTime}")
             speak(f"sir the time is {strTime}")
+
+        elif 'send email' in query:
+            try:
+                print('what should i say?')
+                speak('what should i say ?')
+                content = takecommand()
+                speak('whom should i send email?')
+                to =  takecommand()
+                sendEmail(to, content)
+                print (f"email has been sent to {to} sucessfully.")
+                speak('email has been send sucessfully')
+            except Exception as e:
+                print(e)
+                speak('sorry my dear friend i cannot send this email.')
+

@@ -4,6 +4,8 @@ import speech_recognition as sr
 import wikipedia
 import webbrowser
 import smtplib
+import random
+import os
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -121,3 +123,10 @@ if __name__ == '__main__':
 
         elif "what's up" in query:
             speak("I am great and what about you?")
+
+        elif 'play music' in query:
+            musicDir = 'C:\\Users\\dijac\\Music\\music\\fav'
+            songs = os.listdir(musicDir)
+            print(songs)
+            randomSong = random.randint(0,6)
+            os.startfile(os.path.join(musicDir, songs[randomSong]))

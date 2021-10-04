@@ -1,7 +1,7 @@
 import pyttsx3
 import datetime
 import speech_recognition as sr
-
+import wikipedia
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -63,3 +63,5 @@ if __name__ == '__main__':
     wishMe()
     while True:
         query = takecommand().lower()
+
+        # logic for executing task

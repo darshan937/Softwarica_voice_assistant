@@ -3,6 +3,10 @@ import datetime
 import speech_recognition as sr
 import wikipedia
 import webbrowser
+import smtplib
+import random
+import os
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -58,6 +62,13 @@ def takecommand():
         return "none"
     return query
 
+def sendEmail(to, content):
+    server = smtplib.SMTP('smtp.gmail.com')
+    server.ehlo()
+    server.starttls()
+    server.login('darshanbhusal41@gmail.com', '12+iphone')
+    server.sendmail('darshanbhusal41@gmail.com', to, content)
+    server.close()
 
 
 if __name__ == '__main__':
@@ -89,3 +100,42 @@ if __name__ == '__main__':
         elif 'open campus ' in query:
             webbrowser.open('https://campus.softwarica.edu.np/sign-in')
 
+        elif 'the time' in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            print(f"sir the time is {strTime}")
+            speak(f"sir the time is {strTime}")
+
+        elif 'send email' in query:
+            try:
+                print('what should i say?')
+                speak('what should i say ?')
+                content = takecommand()
+                speak('whom should i send email?')
+                to = takecommand()
+                sendEmail(to, content)
+                print (f"email has been sent to {to} sucessfully.")
+                speak('email has been send sucessfully')
+            except Exception as e:
+                print(e)
+                speak('sorry my dear friend i cannot send this email.')
+
+        elif 'how are you' in query:
+            speak("I am great and what about you?")
+
+        elif "what's up" in query:
+            speak("I am great and what about you?")
+
+        elif 'play music' in query:
+            musicDir = 'C:\\Users\\dijac\\Music\\music\\fav'
+            songs = os.listdir(musicDir)
+            print(songs)
+            randomSong = random.randint(0,6)
+            os.startfile(os.path.join(musicDir, songs[randomSong]))
+
+        elif "exit" in query:
+            exit()
+
+        else :
+            print('I can,t here anything')
+            speak ('I can,t here anything so im sutting down ')
+            break

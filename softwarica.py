@@ -110,7 +110,7 @@ if __name__ == '__main__':
                 speak('what should i say ?')
                 content = takecommand()
                 speak('whom should i send email?')
-                to =  takecommand()
+                to = takecommand()
                 sendEmail(to, content)
                 print (f"email has been sent to {to} sucessfully.")
                 speak('email has been send sucessfully')
@@ -130,3 +130,11 @@ if __name__ == '__main__':
             print(songs)
             randomSong = random.randint(0,6)
             os.startfile(os.path.join(musicDir, songs[randomSong]))
+
+        elif "exit" in query:
+            exit()
+
+        else :
+            print('I can,t here anything')
+            speak ('I can,t here anything so im sutting down ')
+            break

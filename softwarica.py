@@ -80,4 +80,12 @@ if __name__ == '__main__':
         elif 'open google' in query:
             webbrowser.open('google.com')
 
+        elif 'open lms' in query:
+            webbrowser.open('https://lms.softwarica.edu.np/')
+
+        elif 'open teams' in query:
+            webbrowser.open('https://signup.microsoft.com/create-account/signup')
+
+        elif 'open campus ' in query:
+            webbrowser.open('https://campus.softwarica.edu.np/sign-in')
 

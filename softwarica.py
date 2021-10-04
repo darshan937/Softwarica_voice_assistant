@@ -89,3 +89,7 @@ if __name__ == '__main__':
         elif 'open campus ' in query:
             webbrowser.open('https://campus.softwarica.edu.np/sign-in')
 
+        elif 'the time' in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            print(f"sir the time is {strTime}")
+            speak(f"sir the time is {strTime}")

@@ -3,6 +3,7 @@ import datetime
 import speech_recognition as sr
 import wikipedia
 import webbrowser
+import smtplib
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -58,6 +59,13 @@ def takecommand():
         return "none"
     return query
 
+def sendEmail(to, content):
+    server = smtplib.SMTP('smtp.gmail.com')
+    server.ehlo()
+    server.starttls()
+    server.login('darshanbhusal41@gmail.com', '12+iphone')
+    server.sendmail('darshanbhusal41@gmail.com', to, content)
+    server.close()
 
 
 if __name__ == '__main__':
@@ -108,3 +116,8 @@ if __name__ == '__main__':
                 print(e)
                 speak('sorry my dear friend i cannot send this email.')
 
+        elif 'how are you' in query:
+            speak("I am great and what about you?")
+
+        elif "what's up" in query:
+            speak("I am great and what about you?")
